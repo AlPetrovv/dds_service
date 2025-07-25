@@ -7,7 +7,7 @@
 ```sh
   git clone https://github.com/AlPetrovv/dds_service.git
 ```
-1. Создать .env файл в папке с .env.template файлом и заполнить его по примеру
+1. Перейти в папку dds_service от корневой директори и создать .env файл в папке с .env.template файлом и заполнить его по примеру
 
 2. Установить poetry(версия 1.8.4)
    * Можно установить [here](https://python-poetry.org/)
@@ -25,16 +25,20 @@
    ```sh
    poetry install
    ```
-6. Запустить миграции 
+6. Запустить базу данных 
+```sh
+docker compose up --build -d
+```
+7. Запустить миграции 
    ```sh
    python3 manage.py migrate
    ```
-7. Создать суперпользователя
+8. Создать суперпользователя
    ```sh
    python3 manage.py createsuperuser
    ```
-8. Запустить сервер
+9. Запустить сервер
    ```sh
    python3 manage.py runserver
    ```
-9. Открыть браузер и перейти по [адресу](http://localhost:8000/admin/)
+10. Открыть браузер и перейти по [адресу](http://localhost:8000/admin/)
