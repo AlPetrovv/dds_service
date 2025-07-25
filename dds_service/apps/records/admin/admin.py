@@ -1,9 +1,11 @@
-from django.contrib import admin
 from rangefilter.filters import DateRangeFilter
 
-from apps.categories.models import Category
-from apps.records.admin.filters import SubCategoryFilter, CategoryFilter, simple_filter
+from django.contrib import admin
+
+from apps.categories.models import Category, SubCategory
 from apps.records.models import Record, RecordStatus, RecordType
+
+from .filters import simple_filter
 
 
 @admin.register(RecordStatus)
@@ -30,8 +32,10 @@ class RecordAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
     list_filter = (
         ("created_at", DateRangeFilter),
-        simple_filter(Category, "Category", "category"),
-        SubCategoryFilter
+        simple_filter(Category, "Category", "category", 'name'),
+        simple_filter(SubCategory, "Subcategory", "subcategories", 'name', "category__subcategories"),
+        simple_filter(RecordStatus, "Status", "status", 'name'),
+        simple_filter(RecordType, "Type", "type", 'name'),
     )
 
     @admin.display(description="Subcategories")
@@ -39,4 +43,4 @@ class RecordAdmin(admin.ModelAdmin):
         return ", ".join([sc.name for sc in obj.category.subcategories.all()])
 
     def get_queryset(self, request):
-        return super().get_queryset(request).prefetch_related("category", "category__subcategories")
+        return super().get_queryset(request).select_related("category").prefetch_related("category__subcategories")
