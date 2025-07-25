@@ -1,4 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+
 from apps.categories.models import Category
 
 
@@ -26,6 +28,13 @@ class Record(models.Model):
     def __str__(self):
         return f"Record#{self.id}(amount={self.amount}, status={self.status}, type={self.type})"
 
+    def clean(self):
+        """Check category and type match"""
+        if hasattr(self, "category") and hasattr(self, "type") and self.category.record_type != self.type:
+            raise ValidationError(
+                "Category and type do not match, category type: %s, record type: %s" %
+                (self.category.record_type, self.type)
+            )
 
 
 class RecordStatus(models.Model):
