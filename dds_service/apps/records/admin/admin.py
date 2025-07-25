@@ -43,4 +43,5 @@ class RecordAdmin(admin.ModelAdmin):
         return ", ".join([sc.name for sc in obj.category.subcategories.all()])
 
     def get_queryset(self, request):
+        """Eager load subcategories, need to do this to avoid N+1 problem"""
         return super().get_queryset(request).select_related("category").prefetch_related("category__subcategories")
