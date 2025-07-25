@@ -38,6 +38,33 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-rangefilter"
+version = "0.13.3"
+description = "django-admin-rangefilter app, add the filter by a custom date range on the admin UI."
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+files = [
+    {file = "django_admin_rangefilter-0.13.3-py2.py3-none-any.whl", hash = "sha256:a776b1de5c5c153ed167e11fe757f138380207b2295a44d29d939c6ded76463a"},
+    {file = "django_admin_rangefilter-0.13.3.tar.gz", hash = "sha256:8151b840753ea2c4de9963b1904cbbe7e786b7bc04de5dbd64567c86d287bbe8"},
+]
+
+[[package]]
+name = "django-environ"
+version = "0.12.0"
+description = "A package that allows you to utilize 12factor inspired environment variables to configure your Django application."
+optional = false
+python-versions = "<4,>=3.9"
+files = [
+    {file = "django_environ-0.12.0-py2.py3-none-any.whl", hash = "sha256:92fb346a158abda07ffe6eb23135ce92843af06ecf8753f43adf9d2366dcc0ca"},
+    {file = "django_environ-0.12.0.tar.gz", hash = "sha256:227dc891453dd5bde769c3449cf4a74b6f2ee8f7ab2361c93a07068f4179041a"},
+]
+
+[package.extras]
+develop = ["coverage[toml] (>=5.0a4)", "furo (>=2024.8.6)", "pytest (>=4.6.11)", "setuptools (>=71.0.0)", "sphinx (>=5.0)", "sphinx-notfound-page"]
+docs = ["furo (>=2024.8.6)", "sphinx (>=5.0)", "sphinx-notfound-page"]
+testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)", "setuptools (>=71.0.0)"]
+
+[[package]]
 name = "isort"
 version = "6.0.1"
 description = "A Python utility / library to sort Python imports."
@@ -168,4 +195,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0f47c6c2a0b7a67628625c0becb77f8f132e9118d300c35f9e2bbefe462a31a8"
+content-hash = "193bebe1561ba2ee230ec7ad647d3e7b5ca353272b03a6662c9be2d54b5dd671"

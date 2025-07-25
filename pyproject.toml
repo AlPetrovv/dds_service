@@ -10,7 +10,32 @@ python = "^3.10"
 django = "^5.2.4"
 psycopg2-binary = "^2.9.10"
 isort = "^6.0.1"
+django-environ = "^0.12.0"
+django-admin-rangefilter = "^0.13.3"
 
+
+
+[tool.isort]
+py_version = 312
+default_section = "THIRDPARTY"
+known_first_party = ["apps", "dds_service"]
+known_django = "django"
+
+sections = [
+    "FUTURE",
+    "STDLIB",
+    "THIRDPARTY",
+    "DJANGO",
+    "DJANGO_APPS",
+    "FIRSTPARTY",
+    "LOCALFOLDER",
+]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+extend_skip = [
+    "migrations",
+]
 
 [build-system]
 requires = ["poetry-core"]
