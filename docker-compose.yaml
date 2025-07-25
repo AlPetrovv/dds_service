@@ -1,0 +1,19 @@
+version: "4"
+
+services:
+  postgres:
+    container_name: dds-postgres
+    image: postgres:17.5-alpine3.22
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./dds_service/.env
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    driver: bridge
